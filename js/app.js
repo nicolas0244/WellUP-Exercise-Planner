@@ -148,14 +148,20 @@ const StorageManager = {
 const UIManager = {
     updateStats() {
         const stats = StorageManager.calculateStats();
-        document.getElementById('workoutCount').textContent = stats.count;
-        document.getElementById('totalMinutes').textContent = stats.totalMinutes;
-        document.getElementById('caloriesBurned').textContent = stats.totalCalories;
+        const countEl = document.getElementById('workoutCount');
+        const minutesEl = document.getElementById('totalMinutes');
+        const caloriesEl = document.getElementById('caloriesBurned');
+        
+        if (countEl) countEl.textContent = stats.count;
+        if (minutesEl) minutesEl.textContent = stats.totalMinutes;
+        if (caloriesEl) caloriesEl.textContent = stats.totalCalories;
     },
 
     renderWorkouts() {
         const workouts = StorageManager.getThisWeekWorkouts();
         const list = document.getElementById('workoutsList');
+        
+        if (!list) return;  // Element doesn't exist on current page
         
         if (workouts.length === 0) {
             list.innerHTML = '<p style="color: #9CA3AF; text-align: center; padding: 2rem;">No workouts this week. Get started!</p>';
@@ -181,6 +187,8 @@ const UIManager = {
 
     renderWeekCalendar() {
         const calendar = document.getElementById('weekCalendar');
+        if (!calendar) return;  // Element doesn't exist on current page
+        
         const workouts = StorageManager.getThisWeekWorkouts();
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         
