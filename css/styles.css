@@ -115,21 +115,23 @@ body {
 
 /* Navigation Menu */
 .nav-menu {
-    display: none;
+    display: flex;
     flex-direction: row;
     gap: var(--spacing-md);
+    align-items: center;
 }
 
 .nav-btn {
     background: none;
     border: none;
     color: var(--neutral-700);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     font-weight: 500;
     cursor: pointer;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-md);
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -145,6 +147,11 @@ body {
 @media (min-width: 768px) {
     .nav-menu {
         display: flex;
+    }
+
+    .nav-btn {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 
     .menu-btn {

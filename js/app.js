@@ -16,18 +16,29 @@ const PageRouter = {
     currentPage: 'dashboard',
 
     init() {
+        console.log('PageRouter.init() called');
         const navBtns = document.querySelectorAll('.nav-btn');
-        navBtns.forEach(btn => {
-            btn.addEventListener('click', () => this.navigateTo(btn.dataset.page));
+        console.log('Found nav buttons:', navBtns.length);
+        
+        navBtns.forEach((btn, index) => {
+            console.log(`Setting up button ${index}: ${btn.textContent}`);
+            btn.addEventListener('click', (e) => {
+                console.log('Button clicked:', e.target.dataset.page);
+                this.navigateTo(btn.dataset.page);
+            });
         });
     },
 
     navigateTo(page) {
+        console.log('Navigating to page:', page);
+        
         // Hide all pages
         document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
         
         // Show selected page
         const selectedPage = document.getElementById(`page-${page}`);
+        console.log('Selected page element:', selectedPage);
+        
         if (selectedPage) {
             selectedPage.style.display = 'block';
         }
@@ -364,18 +375,28 @@ window.editWorkout = (id) => {
 window.getCurrentStats = () => StorageManager.calculateStats();
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded event fired');
+    
     // Initialize page router
     PageRouter.init();
 
     // Form handling
-    document.getElementById('workoutForm').addEventListener('submit', window.addWorkout);
+    const workoutForm = document.getElementById('workoutForm');
+    if (workoutForm) {
+        workoutForm.addEventListener('submit', window.addWorkout);
+    }
 
     // Set today's date as default
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('workoutDate').valueAsDate = new Date();
+    const workoutDateInput = document.getElementById('workoutDate');
+    if (workoutDateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        workoutDateInput.valueAsDate = new Date();
+    }
 
     // Initial render
     UIManager.updateStats();
     UIManager.renderWorkouts();
     UIManager.renderWeekCalendar();
+    
+    console.log('App initialization complete');
 });
