@@ -191,9 +191,14 @@
 
     <script src="js/app.js"></script>
     <script type="module">
-    // Wait for StorageManager to be available
-    if (typeof StorageManager !== 'undefined') {
-        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    // Initialize chat when StorageManager is available
+    function initializeChat() {
+        if (typeof StorageManager === 'undefined') {
+            setTimeout(initializeChat, 100);
+            return;
+        }
 
         // Get the latest stats from your app logic
         let stats = StorageManager.calculateStats();
@@ -243,6 +248,9 @@
             return originalFetch.apply(this, args);
         };
     }
+
+    // Start initialization
+    initializeChat();
 </script>
 </body>
 </html>
