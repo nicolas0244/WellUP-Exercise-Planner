@@ -1,3 +1,60 @@
+/* Column header for mobile layout */
+.column-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Row nav for mobile layout */
+.row-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Row stats for mobile layout */
+.row-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--spacing-md);
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
+    .row-nav {
+        flex-direction: row;
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
+    }
+    .row-stats {
+        flex-direction: row;
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
+    }
+    .stats-section {
+        margin-bottom: var(--spacing-xs);
+    }
+    .workouts-section {
+        margin-bottom: var(--spacing-xs);
+    }
+    .calendar-section {
+        margin-bottom: var(--spacing-xs);
+    }
+    .section-header h2, .calendar-section h2 {
+        font-size: var(--font-size-base);
+    }
+}
 /* ===================================
    PolyPulse - Light & Clean Wellness App
    Color Scheme: Blue & Soft Accents

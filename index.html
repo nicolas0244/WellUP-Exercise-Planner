@@ -18,16 +18,13 @@
     <div id="app" class="app-container">
         <!-- Header -->
         <header class="header">
-            <div class="header-content">
+            <div class="header-content column-header">
                 <div class="logo">WellUP</div>
-                <nav class="nav-menu">
+                <nav class="nav-menu row-nav">
                     <button class="nav-btn active" data-page="dashboard">📊 Dashboard</button>
                     <button class="nav-btn" data-page="add-workout">➕ Add Workout</button>
                     <button class="nav-btn" data-page="insights">📈 Insights</button>
                 </nav>
-                <button class="menu-btn" id="menuBtn" aria-label="Menu">
-                    <span class="menu-icon">☰</span>
-                </button>
             </div>
         </header>
 
@@ -35,14 +32,8 @@
         <main class="main-content">
             <!-- Dashboard Page -->
             <div class="page" id="page-dashboard" style="display: block;">
-                <!-- Hero Section -->
-                <section class="hero">
-                    <h1>Welcome to WellUP Exercise</h1>
-                    <p>Your wellness journey starts here</p>
-                </section>
-
-                <!-- Stats Section -->
-                <section class="stats-section">
+                <!-- Stats Section (now at top) -->
+                <section class="stats-section row-stats">
                     <div class="stat-card">
                         <div class="stat-icon">🎯</div>
                         <div class="stat-text">
@@ -67,25 +58,23 @@
                 </section>
 
                 <!-- Workout Section -->
-                <!-- Workout Section (Collapsible on mobile) -->
-                <details class="collapsible" id="workoutsCollapsible" open>
-                  <summary>Upcoming Workouts</summary>
-                  <section class="workouts-section collapsible-content">
-                      <div class="workouts-list" id="workoutsList">
-                          <!-- Workouts will be populated here -->
-                      </div>
-                  </section>
-                </details>
+                <!-- Workout Section (not collapsible) -->
+                <section class="workouts-section">
+                    <div class="section-header">
+                        <h2>Upcoming Workouts</h2>
+                    </div>
+                    <div class="workouts-list" id="workoutsList">
+                        <!-- Workouts will be populated here -->
+                    </div>
+                </section>
 
                 <!-- Weekly Calendar (Horizontally scrollable on mobile) -->
-                <details class="collapsible" id="calendarCollapsible" open>
-                  <summary>This Week</summary>
-                  <section class="calendar-section collapsible-content">
-                      <div class="week-calendar" id="weekCalendar">
-                          <!-- Calendar will be populated here -->
-                      </div>
-                  </section>
-                </details>
+                <section class="calendar-section">
+                    <h2>This Week</h2>
+                    <div class="week-calendar" id="weekCalendar">
+                        <!-- Calendar will be populated here -->
+                    </div>
+                </section>
             </div>
 
             <!-- Add Workout Page -->
