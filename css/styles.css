@@ -603,7 +603,7 @@ body {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 24px; /* Extra right padding to ensure last card is fully visible */
     box-sizing: border-box;
 }
 .day-card {
@@ -611,6 +611,7 @@ body {
     flex: 0 0 auto;
     box-sizing: border-box;
     margin-right: var(--spacing-md);
+    overflow: visible;
 }
 .day-card:last-child {
     margin-right: 0;
